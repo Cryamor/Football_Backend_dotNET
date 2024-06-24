@@ -1,0 +1,7 @@
+﻿@Football_Backend_dotNET_HostAddress = http://localhost:5121
+
+GET {{Football_Backend_dotNET_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
