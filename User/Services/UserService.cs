@@ -17,6 +17,13 @@ namespace User.Services
         {
             return _userRepository.GetUserInfo(id);
         }
+
+        public UserEntity? Login(string account, string password)
+        {
+            return _userRepository.GetUserByAccAndPas(account, password);
+        }
+
+
     }
 }
 

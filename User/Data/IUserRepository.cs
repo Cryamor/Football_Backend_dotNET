@@ -5,6 +5,7 @@ namespace User.Data
 {
     public interface IUserRepository
     {
-        UserEntity GetUserInfo(long id);
+        UserEntity? GetUserInfo(long id);
+        UserEntity? GetUserByAccAndPas(string account, string password);
     }
 }

@@ -13,12 +13,6 @@ public class UserEntity
     public string? Avatar { get; set; }
     public bool Isbanned { get; set; }
     public string? FavoriteLeague { get; set; }
-    public bool IsFollowing { get; set; }
-
-    //public UserEntity(long i, string n)
-    //{
-    //    this.Id = i;
-    //    this.Name = n;
-    //}
+    public DateTime CreateDate { get; set; }
 }
 
