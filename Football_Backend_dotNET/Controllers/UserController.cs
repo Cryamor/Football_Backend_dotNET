@@ -56,8 +56,8 @@ namespace Football_Backend_dotNET.Controllers
         public Result CheckIn()
         {
             // 签到交互即证明今日未签到 前端会通过getCheckDays来获取签到过的天数 从而自己判断是否签到过
-
-            return Result.Success();
+            var userId = jwtUtils.GetUserIdFromToken(Request);
+            return Result.Success(userId);
         }
 
         [HttpPost("/subscribe-game")]

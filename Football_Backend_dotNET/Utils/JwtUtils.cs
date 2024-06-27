@@ -45,5 +45,34 @@ public class JwtUtils
 
         return tokenHandler.WriteToken(token);
     }
+
+    public long? GetUserIdFromToken(HttpRequest request)
+    {
+        // 从请求头中获取传递的JWT令牌
+        string authorizationHeader = request.Headers["Authorization"].FirstOrDefault();
+
+        // 验证 Authorization 请求头是否包含 JWT 令牌
+        if (string.IsNullOrEmpty(authorizationHeader) || !authorizationHeader.StartsWith("Bearer"))
+        {
+            Console.WriteLine("未提供有效的JWT");
+            return null;
+        }
+
+        string jwtToken = authorizationHeader.Substring("Bearer ".Length).Trim();
+
+        // 验证并解析JWT令牌
+        var handler = new JwtSecurityTokenHandler();
+        var tokenS = handler.ReadJwtToken(jwtToken);
+
+        // 获取JWT令牌中的claims信息
+        var idClaim = tokenS.Claims.FirstOrDefault(claim => claim.Type == "id");
+
+        if (idClaim != null && long.TryParse(idClaim.Value, out long userId))
+        {
+            return userId;
+        }
+
+        return null;
+    }
 }
 

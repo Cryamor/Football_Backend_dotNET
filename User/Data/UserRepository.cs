@@ -82,25 +82,7 @@ namespace User.Data
             }
         }
 
-        public IEnumerable<UserEntity> GetUsers()
-        {
-            using (var connection = new MySqlConnection(_connectionString))
-            {
-                connection.Open();
-                var users = new List<UserEntity>();
 
-                using (var command = new MySqlCommand("SELECT * FROM Users", connection))
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        
-                    }
-                }
-
-                return users;
-            }
-        }
     }
 }
 
