@@ -3,8 +3,6 @@ using Football_Backend_dotNET.Utils;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Player.Data;
-using Player.Services;
 using User.Data;
 using User.Services;
 
@@ -14,9 +12,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<JwtUtils>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-
-builder.Services.AddScoped<IPlayerService, PlayerService>();
-builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
 
 builder.Configuration.GetSection("ConnectionStrings").Bind(builder.Services);
 
